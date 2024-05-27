@@ -1,0 +1,6 @@
+@GoTrip.Web.Server_HostAddress = http://localhost:5191
+
+GET {{GoTrip.Web.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

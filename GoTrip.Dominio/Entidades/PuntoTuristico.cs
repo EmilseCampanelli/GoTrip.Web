@@ -13,5 +13,7 @@
         public virtual Categoria Categoria { get; set; }
 
         public virtual List<Recorrido> Recorridos { get; set; }
+        public string PathImagen { get; set; }
+
     }
 }

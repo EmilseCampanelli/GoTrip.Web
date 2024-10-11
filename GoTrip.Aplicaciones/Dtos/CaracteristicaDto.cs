@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace GoTrip.Aplicaciones.Dtos
 {
-    public class PuntoTuristicoDto : BaseEntityDto
+    public class CaracteristicaDto : BaseEntityDto
     {
         public string Descripcion { get; set; }
-
-        public int CategoriaId { get; set; }
-        public int UbicacionId { get; set; }
-        public string PathImagen { get; set; }
 
     }
 }

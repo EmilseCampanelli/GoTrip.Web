@@ -14,6 +14,7 @@ namespace GoTrip.Aplicaciones.Dtos
         public string PathImagen { get; set; }
         public int UbicacionId { get; set; }
         public int CategoriaId { get; set; }
+        public List<ComentarioDto> Comentarios { get; set; }
 
     }
 }

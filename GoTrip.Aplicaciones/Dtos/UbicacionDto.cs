@@ -11,7 +11,9 @@ namespace GoTrip.Aplicaciones.Dtos
         public string Descripcion { get; set; }
         public string Longitud {  get; set; }
         public string Latitud { get; set; }
-        public int LocalidadId { get; set; }
+        public string Localidad { get; set; }
+        public string Provincia { get; set; }
+        public string Pais { get; set; }
 
     }
 }

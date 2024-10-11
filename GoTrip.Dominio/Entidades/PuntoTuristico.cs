@@ -11,9 +11,8 @@
         public int? CategoriaId { get; set; }
 
         public virtual Categoria Categoria { get; set; }
-
-        public virtual List<Recorrido> Recorridos { get; set; }
         public string PathImagen { get; set; }
+        public virtual List<Comentario> Comentarios { get; set; }
 
     }
 }

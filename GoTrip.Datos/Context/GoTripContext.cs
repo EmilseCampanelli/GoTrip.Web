@@ -26,8 +26,6 @@ namespace GoTrip.Datos.Context
 
         public DbSet<PuntoTuristico> PuntosTuristicos { get; set; }
 
-        public DbSet<Localidad> Localidades { get; set; }
-
         public DbSet<Usuario> Usuarios { get; set; }
 
         public DbSet<Evento> Eventos { get; set; }

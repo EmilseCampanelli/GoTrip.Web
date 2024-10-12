@@ -1,23 +1,14 @@
-# Carpetas y archivos de Visual Studio
+# Carpetas de compilación y archivos generados
+[Bb]in/
+[Oo]bj/
 .vs/
 *.suo
 *.user
 *.wuser
-
-# Archivos de configuración de proyectos
-DocumentLayout*.json
-
-# Archivos de compilación
-[Bb]in/
-[Oo]bj/
 *.pdb
 *.dll
 *.exe
-*.deps.json
-
-# Otros archivos generados por el entorno
-*.vsix
-.idea/
-*.code-workspace
 *.cache
 *.log
+*.deps.json
+refint/

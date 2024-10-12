@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "U2Mk6H76j/M7fexRSmsFoKUDT0HfDHzrw53N+1SoZSs=",
+  "Source": "GoTrip.Web.Server",
+  "BasePath": "_content/GoTrip.Web.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\gotrip.web.client\\gotrip.web.client.esproj",
+      "Version": 2,
+      "Source": "gotrip.web.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

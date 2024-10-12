@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\GoTrip.Web.Server.props" />
+</Project>

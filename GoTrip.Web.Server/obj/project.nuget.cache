@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vNFbwoe8dTDSduPaweZV+O5brSDdRQMAJncHxYWYJJ1gKhk+/xLQBSptDP+n4EyhKSfdR5HVy4KpaNexE45v1g==",
+  "dgSpecHash": "4ZocMVhIdq0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\GoTrip.Web.Server\\GoTrip.Web.Server.csproj",
+  "projectFilePath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Web.Server\\GoTrip.Web.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ecampanelli\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\ecampanelli\\.nuget\\packages\\automapper.collection\\10.0.0\\automapper.collection.10.0.0.nupkg.sha512",

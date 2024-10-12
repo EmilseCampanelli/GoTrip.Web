@@ -81,7 +81,10 @@
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "GoTrip.Dominio/1.0.0": {
         "runtime": {
-          "GoTrip.Dominio.dll": {}
+          "GoTrip.Dominio.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

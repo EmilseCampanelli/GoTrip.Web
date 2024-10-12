@@ -275,7 +275,10 @@
           "GoTrip.Dominio": "1.0.0"
         },
         "runtime": {
-          "GoTrip.Aplicaciones.dll": {}
+          "GoTrip.Aplicaciones.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "GoTrip.Datos/1.0.0": {
@@ -285,12 +288,18 @@
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
         },
         "runtime": {
-          "GoTrip.Datos.dll": {}
+          "GoTrip.Datos.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "GoTrip.Dominio/1.0.0": {
         "runtime": {
-          "GoTrip.Dominio.dll": {}
+          "GoTrip.Dominio.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

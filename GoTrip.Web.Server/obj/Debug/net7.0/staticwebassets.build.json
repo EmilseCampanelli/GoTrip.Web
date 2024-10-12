@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "U2Mk6H76j/M7fexRSmsFoKUDT0HfDHzrw53N+1SoZSs=",
+  "Hash": "YoQY1Rk2AJdrpaq9X/jF1qfCne1QVo/Caurh5fZL2tg=",
   "Source": "GoTrip.Web.Server",
   "BasePath": "_content/GoTrip.Web.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\gotrip.web.client\\gotrip.web.client.esproj",
+      "Identity": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\gotrip.web.client\\gotrip.web.client.esproj",
       "Version": 2,
       "Source": "gotrip.web.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",

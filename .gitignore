@@ -1,0 +1,14 @@
+# Carpetas de compilación y archivos generados
+[Bb]in/
+[Oo]bj/
+.vs/
+*.suo
+*.user
+*.wuser
+*.pdb
+*.dll
+*.exe
+*.cache
+*.log
+*.deps.json
+refint/

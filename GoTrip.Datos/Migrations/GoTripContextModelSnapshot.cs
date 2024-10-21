@@ -267,7 +267,6 @@ namespace GoTrip.Datos.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("PathImagen")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int?>("PlanViajeId")

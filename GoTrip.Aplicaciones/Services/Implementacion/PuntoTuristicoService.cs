@@ -20,13 +20,11 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         private readonly IRepository<PuntoTuristico> _repository;
         private readonly IMapper _mapper;
         private const int _usuarioId = 1; //TODO: Modificar por el codigo del usuario autenticado
-        private readonly IUbicaciónService _ubicacionService;
 
-        public PuntoTuristicoService(IRepository<PuntoTuristico> repository, IMapper mapper, IUbicaciónService ubicacionService)
+        public PuntoTuristicoService(IRepository<PuntoTuristico> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
-            _ubicacionService = ubicacionService;
         }
 
 

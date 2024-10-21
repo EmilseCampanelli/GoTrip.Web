@@ -5,6 +5,7 @@ using GoTrip.Aplicaciones.Services.Interfaces;
 using GoTrip.Aplicaciones.Validations;
 using GoTrip.Dominio.Contratos;
 using GoTrip.Dominio.Entidades;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +20,13 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         private readonly IRepository<PuntoTuristico> _repository;
         private readonly IMapper _mapper;
         private const int _usuarioId = 1; //TODO: Modificar por el codigo del usuario autenticado
+        private readonly IUbicaciónService _ubicacionService;
 
-        public PuntoTuristicoService(IRepository<PuntoTuristico> repository, IMapper mapper)
+        public PuntoTuristicoService(IRepository<PuntoTuristico> repository, IMapper mapper, IUbicaciónService ubicacionService)
         {
             _repository = repository;
             _mapper = mapper;
+            _ubicacionService = ubicacionService;
         }
 
 
@@ -52,21 +55,83 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             await _repository.Update(puntoTuristico);
         }
 
-        public async Task Save(PuntoTuristicoDto dto)
+        public async Task<PuntoTuristicoDto> Save(PuntoTuristicoDto dto)
         {
+            PuntoTuristico puntoTuristico = new PuntoTuristico();
+
             if (dto.Id.Equals(0))
             {
                 var newPuntoTuristico = _mapper.Map<PuntoTuristico>(dto);
                 BaseEntityHelper.SetCreated(newPuntoTuristico, _usuarioId);
-                await _repository.Add(newPuntoTuristico);
+                puntoTuristico = await _repository.Add(newPuntoTuristico);
             }
             else
             {
                 var updatedPuntoTuristico = _mapper.Map<PuntoTuristico>(dto);
                 BaseEntityHelper.SetUpdated(updatedPuntoTuristico, _usuarioId);
-                await _repository.Update(updatedPuntoTuristico);
+                puntoTuristico = await _repository.Update(updatedPuntoTuristico);
             }
+
+            return _mapper.Map<PuntoTuristicoDto>(puntoTuristico);
         }
+
+        public async Task<string> PutImage(List<IFormFile> images)
+        {
+            var pathImages = await SavePicture(images);
+            return String.Join(",", pathImages);
+        }
+
+        public async Task<List<string>> SavePicture(List<IFormFile> images)
+        {
+            var stringPath = new List<string>();
+
+            if (!images.Any())
+            {
+                return stringPath;
+            }
+
+            foreach (var image in images)
+            {
+                if (image == null || image.Length == 0)
+                {
+                    continue;
+                }
+
+                try
+                {
+                    var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "Images");
+
+                    if (!Directory.Exists(uploadFolder))
+                    {
+                        Directory.CreateDirectory(uploadFolder);
+                    }
+
+                    var imageName = $"{Path.GetFileNameWithoutExtension(image.FileName)}_{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
+                    var imagePath = Path.Combine(uploadFolder, imageName);
+
+                    if (File.Exists(imagePath))
+                    {
+                        continue;
+                    }
+
+                    using (var stream = new FileStream(imagePath, FileMode.CreateNew, FileAccess.Write, FileShare.None))
+                    {
+                        await image.CopyToAsync(stream);
+                    }
+
+                    var relativePath = Path.Combine("Images", imageName);
+                    stringPath.Add(relativePath);
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al guardar la imagen", ex);
+                }
+            }
+
+            return stringPath;
+        }
+
 
         public async Task<(bool isValid, string message)> Validate(int? id, PuntoTuristicoDto dto)
         {

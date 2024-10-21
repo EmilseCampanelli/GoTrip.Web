@@ -16,5 +16,11 @@ namespace GoTrip.Web.Server.Controllers
             _puntoTuristicoService = puntoTuristicoService;
         }
 
+        [HttpPost("PutImages")]
+        public async Task<IActionResult> PutImages([FromForm] List<IFormFile> images)
+        {
+            return Ok(await _puntoTuristicoService.PutImage(images));
+        }
+
     }
 }

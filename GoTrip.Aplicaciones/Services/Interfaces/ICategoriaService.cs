@@ -13,7 +13,7 @@ namespace GoTrip.Aplicaciones.Services.Interfaces
 {
     public interface ICategoriaService : IGenericService<CategoriaDto>
     {
-        Task Save(CategoriaDto categoria);
+        Task<CategoriaDto> Save(CategoriaDto categoria);
 
         Task Delete(int id);
 

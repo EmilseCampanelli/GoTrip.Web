@@ -22,9 +22,11 @@ var serverVersion = new MySqlServerVersion(new Version(8, 0, 36));
 builder.Services.AddDbContext<GoTripContext>(dbConection => dbConection.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 builder.Services.AddScoped<IPuntoTuristicoService, PuntoTuristicoService>();
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddAutoMapper(typeof(PuntoTuristicoProfile));
+builder.Services.AddAutoMapper(typeof(CategoriaProfile));
 
 var app = builder.Build();
 

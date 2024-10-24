@@ -56,6 +56,12 @@ namespace GoTrip.Datos.Repository
             return _context<T>(sqlQuery, parameters);
         }*/
 
+        public async Task Delete(TEntity item)
+        {
+            _dbSet.Remove(item);
+            await Save();
+        }
+
         public async Task Save()
         {
             await _context.SaveChangesAsync();

@@ -9,6 +9,10 @@ namespace GoTrip.Aplicaciones.Dtos
     public class CategoriaDto : BaseEntityDto
     {
         public string Descripcion { get; set; }
-        public List<int> Categorias { get; set; }
+        public int UsuarioId { get; set; }
+        public string State { get; set; }
+
+        public DateTime UpdatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

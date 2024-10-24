@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace GoTrip.Aplicaciones.Dtos
         public CategoriaDto? Categoria { get; set; }
         public int UbicacionId { get; set; }
         public UbicacionDto? Ubicacion { get; set; }
-        public string PathImagen { get; set; }
-        public List<ComentarioDto> Comentarios { get; set; }
+        public string? PathImagen { get; set; }
+        public List<ComentarioDto>? Comentarios { get; set; }
     }
 }

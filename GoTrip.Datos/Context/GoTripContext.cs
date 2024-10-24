@@ -34,5 +34,8 @@ namespace GoTrip.Datos.Context
 
         public DbSet<PlanViaje> PlanViajes { get; set; }
 
+        public DbSet<LineaPuntoTuristico> LineaPuntoTuristicos { get; set; }
+        public DbSet<LineaRecorrido> LineaRecorridos { get; set; }
+
     }
 }

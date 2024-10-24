@@ -52,20 +52,27 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             await _repository.Update(categoria);
         }
 
-        public async Task Save(CategoriaDto dto)
+        public async Task<CategoriaDto> Save(CategoriaDto dto)
         {
+            Categoria categoria;
+
             if (dto.Id.Equals(0))
             {
-                var newcategoria = _mapper.Map<Categoria>(dto);
-                BaseEntityHelper.SetCreated(newcategoria, _usuarioId);
-                await _repository.Add(newcategoria);
+           
+                categoria = _mapper.Map<Categoria>(dto);
+                BaseEntityHelper.SetCreated(categoria, _usuarioId);
+                await _repository.Add(categoria);
             }
             else
             {
-                var updatedCategoria = _mapper.Map<Categoria>(dto);
-                BaseEntityHelper.SetUpdated(updatedCategoria, _usuarioId);
-                await _repository.Update(updatedCategoria);
+              
+                categoria = _mapper.Map<Categoria>(dto);
+                BaseEntityHelper.SetUpdated(categoria, _usuarioId);
+                await _repository.Update(categoria);
             }
+
+      
+            return _mapper.Map<CategoriaDto>(categoria);
         }
 
         public async Task Delete(int id)

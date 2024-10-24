@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {}
+    "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {
+    "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj",
+        "projectUniqueName": "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj",
         "projectName": "GoTrip.Dominio",
-        "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj",
-        "packagesPath": "C:\\Users\\ecampanelli\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\GoTrip.Dominio\\obj\\",
+        "projectPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj",
+        "packagesPath": "C:\\Users\\tomy_\\.nuget\\packages\\",
+        "outputPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ecampanelli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tomy_\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -60,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

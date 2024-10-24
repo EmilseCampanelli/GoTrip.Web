@@ -15,7 +15,8 @@ namespace GoTrip.Dominio.Contratos
 
         IQueryable<TEntity> GetFiltered(Expression<Func<TEntity, bool>> filter);
 
-       //Task<IEnumerable<T>> ExecuteQuery<T>(string sqlQuery, params object[] parameters);
+        //Task<IEnumerable<T>> ExecuteQuery<T>(string sqlQuery, params object[] parameters);
+        Task Delete(TEntity item);
 
         Task Save();
     }

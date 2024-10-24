@@ -1040,19 +1040,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ecampanelli\\.nuget\\packages\\": {}
+    "C:\\Users\\tomy_\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj",
+      "projectUniqueName": "E:\\Tesis\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj",
       "projectName": "GoTrip.Datos",
-      "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj",
-      "packagesPath": "C:\\Users\\ecampanelli\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\GoTrip.Datos\\obj\\",
+      "projectPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj",
+      "packagesPath": "C:\\Users\\tomy_\\.nuget\\packages\\",
+      "outputPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Datos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ecampanelli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tomy_\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1066,8 +1066,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {
-              "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj"
+            "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {
+              "projectPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj"
             }
           }
         }
@@ -1076,11 +1076,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1118,7 +1113,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

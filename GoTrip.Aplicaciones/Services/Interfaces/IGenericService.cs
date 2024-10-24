@@ -9,7 +9,7 @@ namespace GoTrip.Aplicaciones.Services.Interfaces
         Task<bool> Exists(int id);
         Task Activate(int id);
         Task Inactivate(int id);
-        Task Save(TDto dto);
+        Task<TDto> Save(TDto dto);
         Task<(bool isValid, string message)> Validate(int? id, TDto dto);
     }
 }

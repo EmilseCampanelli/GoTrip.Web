@@ -32,8 +32,7 @@ namespace GoTrip.Web.Server.Controllers
             var (isValid, message) = await _entityService.Validate(null, dto);
             if (!isValid) return BadRequest(message);
 
-            await _entityService.Save(dto);
-            return Ok();
+            return Ok(await _entityService.Save(dto));
         }
 
         [HttpPut("{id}")]

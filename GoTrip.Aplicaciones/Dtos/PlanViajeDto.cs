@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoTrip.Dominio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,8 @@ namespace GoTrip.Aplicaciones.Dtos
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public string Descripcion { get; set; }
-        public List<int> EventosId { get; set; }
-        public List<int> PuntosId { get; set; }
-        public List<int>? RecorridosId { get; set; }
+        public List<LineaPuntoTuristico> PuntosId { get; set; }
+        public List<LineaRecorridoDto>? RecorridosId { get; set; }
         public string EstadoPlan { get; set; }
     }
 }

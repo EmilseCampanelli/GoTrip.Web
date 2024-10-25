@@ -10,7 +10,7 @@ namespace GoTrip.Dominio.Entidades
     {
         public virtual PlanViaje PlanViaje { get; set; }
         public virtual PuntoTuristico? PuntoTuristico { get; set; }
-        public virtual Evento? evento { get; set; }
+        public virtual Evento? Evento { get; set; }
 
     }
 }

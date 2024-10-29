@@ -15,6 +15,12 @@ namespace GoTrip.Aplicaciones.Mapper
         {
             CreateMap<PuntoTuristicoDto, PuntoTuristico>()
                 .ReverseMap();
+            CreateMap<Ubicacion, UbicacionDto>()
+            .ReverseMap();
+            CreateMap<Categoria, CategoriaDto>()
+                .ReverseMap();
+            CreateMap<Comentario, ComentarioDto>()
+                .ReverseMap();
         }
     }
 }

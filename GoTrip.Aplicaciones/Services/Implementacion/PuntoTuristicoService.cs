@@ -3,6 +3,7 @@ using GoTrip.Aplicaciones.Dtos;
 using GoTrip.Aplicaciones.Helper;
 using GoTrip.Aplicaciones.Services.Interfaces;
 using GoTrip.Aplicaciones.Validations;
+using GoTrip.Datos.Repository;
 using GoTrip.Dominio.Contratos;
 using GoTrip.Dominio.Entidades;
 using Microsoft.AspNetCore.Http;
@@ -17,40 +18,42 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
     public class PuntoTuristicoService : IPuntoTuristicoService
     {
 
-        private readonly IRepository<PuntoTuristico> _repository;
+        private readonly IPuntoTuristicoRepository _puntosRepository;
         private readonly IMapper _mapper;
         private const int _usuarioId = 1; //TODO: Modificar por el codigo del usuario autenticado
 
-        public PuntoTuristicoService(IRepository<PuntoTuristico> repository, IMapper mapper)
+        public PuntoTuristicoService(IPuntoTuristicoRepository repository, IRepository<Comentario> repoComentario,IRepository<Ubicacion> repoUbicacion, IMapper mapper)
         {
-            _repository = repository;
+            _puntosRepository = repository;
             _mapper = mapper;
         }
 
 
         public async Task Activate(int id)
         {
-            var puntoTuristico = await _repository.Get(id);
+            var puntoTuristico = await _puntosRepository.Get(id);
             BaseEntityHelper.SetActive(puntoTuristico, _usuarioId);
-            await _repository.Update(puntoTuristico);
+            await _puntosRepository.Update(puntoTuristico);
         }
 
         public async Task<bool> Exists(int id)
         {
-            return await _repository.Get(id) != null;
+            return await _puntosRepository.Get(id) != null;
         }
 
         public async Task<PuntoTuristicoDto> Get(int id)
         {
-            var model = await _repository.Get(id);
-            return _mapper.Map<PuntoTuristicoDto>(model);
+            var model = await _puntosRepository.GetPunto(id);
+            var mapeo = _mapper.Map<PuntoTuristicoDto>(model);
+            return mapeo;
+            
         }
 
         public async Task Inactivate(int id)
         {
-            var puntoTuristico = await _repository.Get(id);
+            var puntoTuristico = await _puntosRepository.Get(id);
             BaseEntityHelper.SetInactive(puntoTuristico, _usuarioId);
-            await _repository.Update(puntoTuristico);
+            await _puntosRepository.Update(puntoTuristico);
         }
 
         public async Task<PuntoTuristicoDto> Save(PuntoTuristicoDto dto)
@@ -61,13 +64,13 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             {
                 var newPuntoTuristico = _mapper.Map<PuntoTuristico>(dto);
                 BaseEntityHelper.SetCreated(newPuntoTuristico, _usuarioId);
-                puntoTuristico = await _repository.Add(newPuntoTuristico);
+                puntoTuristico = await _puntosRepository.Add(newPuntoTuristico);
             }
             else
             {
                 var updatedPuntoTuristico = _mapper.Map<PuntoTuristico>(dto);
                 BaseEntityHelper.SetUpdated(updatedPuntoTuristico, _usuarioId);
-                puntoTuristico = await _repository.Update(updatedPuntoTuristico);
+                puntoTuristico = await _puntosRepository.Update(updatedPuntoTuristico);
             }
 
             return _mapper.Map<PuntoTuristicoDto>(puntoTuristico);

@@ -8,7 +8,6 @@ namespace GoTrip.Dominio.Entidades
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public virtual List<LineaPuntoTuristico> LineaPuntos { get; set; }
-        public virtual List<LineaRecorrido>? LineaRecorridos { get; set; }
         public EstadoPlanViaje Estado { get; set; }
     }
 }

@@ -8,6 +8,9 @@ namespace GoTrip.Dominio.Entidades
 {
     public class LineaRecorrido : BaseEntity
     {
+        public int? EventoId { get; set; }
+        public int? PuntoTuristicoId { get; set; }
+        public int RecorridoId { get; set; }
         public Evento? Evento { get; set; }
         public PuntoTuristico? PuntoTuristico { get; set; }
         public Recorrido Recorrido { get; set; }

@@ -10,7 +10,7 @@ namespace GoTrip.Datos.Repository
         where TEntity : BaseEntity
     {
         private readonly GoTripContext _context;
-        private DbSet<TEntity> _dbSet;
+        protected DbSet<TEntity> _dbSet;
 
         public GenericRepository(GoTripContext context)
         {

@@ -3,7 +3,6 @@ using GoTrip.Aplicaciones.Dtos;
 using GoTrip.Aplicaciones.Helper;
 using GoTrip.Aplicaciones.Services.Interfaces;
 using GoTrip.Aplicaciones.Validations;
-using GoTrip.Datos.Repository;
 using GoTrip.Dominio.Contratos;
 using GoTrip.Dominio.Entidades;
 using Microsoft.AspNetCore.Http;

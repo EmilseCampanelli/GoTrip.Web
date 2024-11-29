@@ -24,6 +24,8 @@ builder.Services.AddDbContext<GoTripContext>(dbConection => dbConection.UseMySql
 
 builder.Services.AddScoped<IPuntoTuristicoService, PuntoTuristicoService>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<IEventoService, EventoService>();
+builder.Services.AddScoped<IUbicacionService, UbicacionService>();
 builder.Services.AddScoped<IComentarioService, ComentarioService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IPuntoTuristicoRepository, PuntoTuristicoRepository>();

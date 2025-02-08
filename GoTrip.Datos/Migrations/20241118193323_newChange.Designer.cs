@@ -3,6 +3,7 @@ using System;
 using GoTrip.Datos.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoTrip.Datos.Migrations
 {
     [DbContext(typeof(GoTripContext))]
-    partial class GoTripContextModelSnapshot : ModelSnapshot
+    [Migration("20241118193323_newChange")]
+    partial class newChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -486,9 +489,6 @@ namespace GoTrip.Datos.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<int>("State")
-                        .HasColumnType("int");
 
                     b.Property<string>("Telefono")
                         .IsRequired()

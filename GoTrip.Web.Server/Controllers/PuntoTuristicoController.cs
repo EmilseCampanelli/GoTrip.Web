@@ -17,9 +17,9 @@ namespace GoTrip.Web.Server.Controllers
         }
 
         [HttpPost("PutImages")]
-        public async Task<IActionResult> PutImages([FromForm] List<IFormFile> images)
+        public async Task<IActionResult> PutImages([FromForm] List<IFormFile> images, int id)
         {
-            return Ok(await _puntoTuristicoService.PutImage(images));
+            return Ok(await _puntoTuristicoService.PutImage(images, id));
         }
 
     }

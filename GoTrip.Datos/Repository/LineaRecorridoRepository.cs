@@ -40,5 +40,10 @@ namespace GoTrip.Datos.Repository
             // Guarda los cambios en la base de datos
             await _context.SaveChangesAsync();
         }
+        public async Task<List<LineaRecorrido>> GetLineasConPlanViajeId(int id)
+        {
+            var lineas = await GetFiltered(lp => lp.PlanViajeId == id).ToListAsync();
+            return lineas;
+        }
     }
 }

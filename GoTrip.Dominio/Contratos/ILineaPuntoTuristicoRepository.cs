@@ -11,5 +11,6 @@ namespace GoTrip.Dominio.Contratos
     {
         Task SaveAll(List<LineaPuntoTuristico> list);
         Task UpdateAll(List<LineaPuntoTuristico> list);
+        Task<List<LineaPuntoTuristico>> GetLineasConPlanViajeId(int id);
     }
 }

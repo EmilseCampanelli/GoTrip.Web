@@ -11,5 +11,6 @@ namespace GoTrip.Dominio.Contratos
     {
         Task SaveAll(List<LineaRecorrido> list);
         Task UpdateAll(List<LineaRecorrido> list);
+        Task<List<LineaRecorrido>> GetLineasConPlanViajeId(int id);
     }
 }

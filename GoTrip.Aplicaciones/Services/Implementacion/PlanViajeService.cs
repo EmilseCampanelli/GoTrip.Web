@@ -37,10 +37,29 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             return await _repository.Get(id) != null;
         }
 
-        public async Task<PlanViaje> Get(int id)//falta modificar para traer dtos correctos.
+        public async Task<PlanViajeDto> Get(int id)
         {
+            //var model = await _repository.Get(id);
+            //return _mapper.Map<PlanViaje>(model);
+
+            // Obtener el modelo de PlanViaje
             var model = await _repository.Get(id);
-            return _mapper.Map<PlanViaje>(model);
+
+            // Mapear el modelo a PlanViajeDto
+            var mapeo = _mapper.Map<PlanViajeDto>(model);
+
+            // Obtener las líneas de puntos turísticos asociadas al PlanViaje
+            var lineaPuntosT = await _lineaPuntoRepository.GetLineasConPlanViajeId(id);
+
+            // Mapear las líneas de puntos turísticos a DTOs y añadirlas al DTO del PlanViaje
+            mapeo.PuntosId = _mapper.Map<List<LineaPuntoTuristicoDto>>(lineaPuntosT);
+
+            // Si necesitas agregar las líneas de recorrido (suponiendo que también están en el DTO)
+            var lineaRecorridos = await _lineaRecorridoRepository.GetLineasConPlanViajeId(id);
+            mapeo.RecorridosId = _mapper.Map<List<LineaRecorridoDto>>(lineaRecorridos);
+
+            // Retornar el DTO completo
+            return mapeo;
         }
 
         public async Task Inactivate(int id)
@@ -50,7 +69,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             await _repository.Update(planViaje);
         }
 
-        public async Task<PlanViaje> Save(PlanViaje dto)
+        public async Task<PlanViajeDto> Save(PlanViaje dto)
         {
             PlanViaje planViaje = new PlanViaje();
             if (dto.Id.Equals(0))
@@ -75,11 +94,25 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             }
             else
             {
-                var updatedComentario = _mapper.Map<Comentario>(dto);
-                BaseEntityHelper.SetUpdated(updatedComentario, _usuarioId);
-                await _repository.Update(updatedComentario);
+                planViaje = _mapper.Map<PlanViaje>(dto);
+                foreach (var linea in dto.LineaPuntos)
+                {
+                    LineaPuntoTuristico lineaPtoTur = new LineaPuntoTuristico();
+                    lineaPtoTur = _mapper.Map<LineaPuntoTuristico>(linea);
+                    planViaje.LineaPuntos.Add(lineaPtoTur);
+                }
+                foreach (var linea in dto.LineaRecorridos)
+                {
+                    LineaRecorrido lineaRecorrido = new LineaRecorrido();
+                    lineaRecorrido = _mapper.Map<LineaRecorrido>(linea);
+                    planViaje.LineaRecorridos.Add(lineaRecorrido);
+                }
+                BaseEntityHelper.SetUpdated(planViaje, dto.UsuarioId);
+                await _lineaPuntoRepository.UpdateAll(planViaje.LineaPuntos);
+                await _lineaRecorridoRepository.UpdateAll(planViaje.LineaRecorridos);
+                await _repository.Update(planViaje);
             }
-            return _mapper.Map<ComentarioDto>(dto);
+            return _mapper.Map<PlanViajeDto>(planViaje);
         }
 
         public Task<PlanViajeDto> Save(PlanViajeDto dto)
@@ -87,19 +120,14 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             throw new NotImplementedException();
         }
 
-        public Task<(bool isValid, string message)> Validate(int? id, PlanViaje dto)
+        public async Task<(bool isValid, string message)> Validate(int? id, PlanViajeDto dto)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<(bool isValid, string message)> Validate(int? id, PlanViajeDto dto)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<PlanViajeDto> IGenericService<PlanViajeDto>.Get(int id)
-        {
-            throw new NotImplementedException();
+            var validations = new List<(bool isValid, string message)>();
+            var Valid = true;
+            var messageTest = "is true";
+            validations.Add((Valid,messageTest));
+            return (isValid: validations.All(x => x.isValid),
+                    message: string.Join(Environment.NewLine, validations.Where(x => !x.isValid).Select(x => x.message)));
         }
     }
 }

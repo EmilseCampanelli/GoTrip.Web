@@ -24,13 +24,20 @@ builder.Services.AddDbContext<GoTripContext>(dbConection => dbConection.UseMySql
 
 builder.Services.AddScoped<IPuntoTuristicoService, PuntoTuristicoService>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<IEventoService, EventoService>();
+builder.Services.AddScoped<IUbicacionService, UbicacionService>();
 builder.Services.AddScoped<IComentarioService, ComentarioService>();
+builder.Services.AddScoped<IPlanViajeService, PlanViajeService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IPuntoTuristicoRepository, PuntoTuristicoRepository>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
 builder.Services.AddAutoMapper(typeof(PuntoTuristicoProfile));
 builder.Services.AddAutoMapper(typeof(CategoriaProfile));
 builder.Services.AddAutoMapper(typeof(ComentarioProfile));
+builder.Services.AddAutoMapper(typeof(PlanViajeProfile));
+builder.Services.AddAutoMapper(typeof(UsuarioProfile));
 
 var app = builder.Build();
 

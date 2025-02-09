@@ -11,8 +11,9 @@ namespace GoTrip.Dominio.Entidades
         public int? EventoId { get; set; }
         public int? PuntoTuristicoId { get; set; }
         public int RecorridoId { get; set; }
+        public int PlanViajeId { get; set; }
         public Evento? Evento { get; set; }
         public PuntoTuristico? PuntoTuristico { get; set; }
-        public Recorrido Recorrido { get; set; }
+        public PlanViaje PlanViaje { get; set; }
     }
 }

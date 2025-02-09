@@ -3,6 +3,7 @@ using System;
 using GoTrip.Datos.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoTrip.Datos.Migrations
 {
     [DbContext(typeof(GoTripContext))]
-    partial class GoTripContextModelSnapshot : ModelSnapshot
+    [Migration("20241024024307_3.0.0-change")]
+    partial class _300change
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -151,6 +154,12 @@ namespace GoTrip.Datos.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int?>("PlanViajeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RecorridoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("State")
                         .HasColumnType("int");
 
@@ -167,91 +176,15 @@ namespace GoTrip.Datos.Migrations
 
                     b.HasIndex("CategoriaId");
 
+                    b.HasIndex("PlanViajeId");
+
+                    b.HasIndex("RecorridoId");
+
                     b.HasIndex("UbicacionId");
 
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Eventos");
-                });
-
-            modelBuilder.Entity("GoTrip.Dominio.Entidades.LineaPuntoTuristico", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("EventoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PlanViajeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PuntoTuristicoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("State")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventoId");
-
-                    b.HasIndex("PlanViajeId");
-
-                    b.HasIndex("PuntoTuristicoId");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("LineaPuntoTuristicos");
-                });
-
-            modelBuilder.Entity("GoTrip.Dominio.Entidades.LineaRecorrido", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("EventoId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PuntoTuristicoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RecorridoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("State")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventoId");
-
-                    b.HasIndex("PuntoTuristicoId");
-
-                    b.HasIndex("RecorridoId");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("LineaRecorridos");
                 });
 
             modelBuilder.Entity("GoTrip.Dominio.Entidades.Permiso", b =>
@@ -340,6 +273,12 @@ namespace GoTrip.Datos.Migrations
                     b.Property<string>("PathImagen")
                         .HasColumnType("longtext");
 
+                    b.Property<int?>("PlanViajeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RecorridoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("State")
                         .HasColumnType("int");
 
@@ -355,6 +294,10 @@ namespace GoTrip.Datos.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoriaId");
+
+                    b.HasIndex("PlanViajeId");
+
+                    b.HasIndex("RecorridoId");
 
                     b.HasIndex("UbicacionId");
 
@@ -487,9 +430,6 @@ namespace GoTrip.Datos.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("State")
-                        .HasColumnType("int");
-
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -550,11 +490,11 @@ namespace GoTrip.Datos.Migrations
 
             modelBuilder.Entity("GoTrip.Dominio.Entidades.Comentario", b =>
                 {
-                    b.HasOne("GoTrip.Dominio.Entidades.Evento", null)
+                    b.HasOne("GoTrip.Dominio.Entidades.Evento", "Evento")
                         .WithMany("Comentarios")
                         .HasForeignKey("EventoId");
 
-                    b.HasOne("GoTrip.Dominio.Entidades.PuntoTuristico", null)
+                    b.HasOne("GoTrip.Dominio.Entidades.PuntoTuristico", "PuntoTuristico")
                         .WithMany("Comentarios")
                         .HasForeignKey("PuntoTuristicoId");
 
@@ -563,6 +503,10 @@ namespace GoTrip.Datos.Migrations
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Evento");
+
+                    b.Navigation("PuntoTuristico");
 
                     b.Navigation("Usuario");
                 });
@@ -574,6 +518,14 @@ namespace GoTrip.Datos.Migrations
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("GoTrip.Dominio.Entidades.PlanViaje", null)
+                        .WithMany("Eventos")
+                        .HasForeignKey("PlanViajeId");
+
+                    b.HasOne("GoTrip.Dominio.Entidades.Recorrido", null)
+                        .WithMany("Eventos")
+                        .HasForeignKey("RecorridoId");
 
                     b.HasOne("GoTrip.Dominio.Entidades.Ubicacion", "Ubicacion")
                         .WithMany()
@@ -590,68 +542,6 @@ namespace GoTrip.Datos.Migrations
                     b.Navigation("Categoria");
 
                     b.Navigation("Ubicacion");
-
-                    b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("GoTrip.Dominio.Entidades.LineaPuntoTuristico", b =>
-                {
-                    b.HasOne("GoTrip.Dominio.Entidades.Evento", "Evento")
-                        .WithMany()
-                        .HasForeignKey("EventoId");
-
-                    b.HasOne("GoTrip.Dominio.Entidades.PlanViaje", "PlanViaje")
-                        .WithMany("LineaPuntos")
-                        .HasForeignKey("PlanViajeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GoTrip.Dominio.Entidades.PuntoTuristico", "PuntoTuristico")
-                        .WithMany()
-                        .HasForeignKey("PuntoTuristicoId");
-
-                    b.HasOne("GoTrip.Dominio.Entidades.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Evento");
-
-                    b.Navigation("PlanViaje");
-
-                    b.Navigation("PuntoTuristico");
-
-                    b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("GoTrip.Dominio.Entidades.LineaRecorrido", b =>
-                {
-                    b.HasOne("GoTrip.Dominio.Entidades.Evento", "Evento")
-                        .WithMany()
-                        .HasForeignKey("EventoId");
-
-                    b.HasOne("GoTrip.Dominio.Entidades.PuntoTuristico", "PuntoTuristico")
-                        .WithMany()
-                        .HasForeignKey("PuntoTuristicoId");
-
-                    b.HasOne("GoTrip.Dominio.Entidades.Recorrido", "Recorrido")
-                        .WithMany("LineaRecorridos")
-                        .HasForeignKey("RecorridoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GoTrip.Dominio.Entidades.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Evento");
-
-                    b.Navigation("PuntoTuristico");
-
-                    b.Navigation("Recorrido");
 
                     b.Navigation("Usuario");
                 });
@@ -684,6 +574,14 @@ namespace GoTrip.Datos.Migrations
                         .WithMany()
                         .HasForeignKey("CategoriaId");
 
+                    b.HasOne("GoTrip.Dominio.Entidades.PlanViaje", null)
+                        .WithMany("Puntos")
+                        .HasForeignKey("PlanViajeId");
+
+                    b.HasOne("GoTrip.Dominio.Entidades.Recorrido", null)
+                        .WithMany("PuntoTuristicos")
+                        .HasForeignKey("RecorridoId");
+
                     b.HasOne("GoTrip.Dominio.Entidades.Ubicacion", "Ubicacion")
                         .WithMany()
                         .HasForeignKey("UbicacionId");
@@ -704,7 +602,7 @@ namespace GoTrip.Datos.Migrations
             modelBuilder.Entity("GoTrip.Dominio.Entidades.Recorrido", b =>
                 {
                     b.HasOne("GoTrip.Dominio.Entidades.PlanViaje", "PlanViaje")
-                        .WithMany()
+                        .WithMany("Recorridos")
                         .HasForeignKey("PlanViajeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -769,7 +667,11 @@ namespace GoTrip.Datos.Migrations
 
             modelBuilder.Entity("GoTrip.Dominio.Entidades.PlanViaje", b =>
                 {
-                    b.Navigation("LineaPuntos");
+                    b.Navigation("Eventos");
+
+                    b.Navigation("Puntos");
+
+                    b.Navigation("Recorridos");
                 });
 
             modelBuilder.Entity("GoTrip.Dominio.Entidades.PuntoTuristico", b =>
@@ -779,7 +681,9 @@ namespace GoTrip.Datos.Migrations
 
             modelBuilder.Entity("GoTrip.Dominio.Entidades.Recorrido", b =>
                 {
-                    b.Navigation("LineaRecorridos");
+                    b.Navigation("Eventos");
+
+                    b.Navigation("PuntoTuristicos");
                 });
 #pragma warning restore 612, 618
         }

@@ -9,7 +9,7 @@ namespace GoTrip.Datos.Repository
     public class GenericRepository<TEntity> : IRepository<TEntity>
         where TEntity : BaseEntity
     {
-        private readonly GoTripContext _context;
+        protected readonly GoTripContext _context;
         protected DbSet<TEntity> _dbSet;
 
         public GenericRepository(GoTripContext context)

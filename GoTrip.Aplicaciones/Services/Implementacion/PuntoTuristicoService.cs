@@ -6,11 +6,6 @@ using GoTrip.Aplicaciones.Validations;
 using GoTrip.Dominio.Contratos;
 using GoTrip.Dominio.Entidades;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GoTrip.Aplicaciones.Services.Implementacion
 {
@@ -21,7 +16,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         private readonly IMapper _mapper;
         private const int _usuarioId = 1; //TODO: Modificar por el codigo del usuario autenticado
 
-        public PuntoTuristicoService(IPuntoTuristicoRepository repository, IRepository<Comentario> repoComentario,IRepository<Ubicacion> repoUbicacion, IMapper mapper)
+        public PuntoTuristicoService(IPuntoTuristicoRepository repository, IRepository<Comentario> repoComentario, IRepository<Ubicacion> repoUbicacion, IMapper mapper)
         {
             _puntosRepository = repository;
             _mapper = mapper;
@@ -45,7 +40,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             var model = await _puntosRepository.GetPunto(id);
             var mapeo = _mapper.Map<PuntoTuristicoDto>(model);
             return mapeo;
-            
+
         }
 
         public async Task Inactivate(int id)
@@ -75,9 +70,14 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             return _mapper.Map<PuntoTuristicoDto>(puntoTuristico);
         }
 
-        public async Task<string> PutImage(List<IFormFile> images)
+        public async Task<string> PutImage(List<IFormFile> images, int id)
         {
             var pathImages = await SavePicture(images);
+
+            var puntoTuristico = await _puntosRepository.Get(id);
+            puntoTuristico.PathImagen = String.Join(",", pathImages);
+            await _puntosRepository.Update(puntoTuristico);
+
             return String.Join(",", pathImages);
         }
 
@@ -119,7 +119,8 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
                         await image.CopyToAsync(stream);
                     }
 
-                    var relativePath = Path.Combine("Images", imageName);
+                    var relativePath = Path.Combine(uploadFolder, imageName);
+                    Path.Combine(uploadFolder, Guid.NewGuid().ToString() + Path.GetExtension(image.FileName));
                     stringPath.Add(relativePath);
 
                 }

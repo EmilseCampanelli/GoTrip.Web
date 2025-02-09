@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Tesis\\GoTrip.Web\\GoTrip.Web.Server\\GoTrip.Web.Server.csproj": {}
+    "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Web.Server\\GoTrip.Web.Server.csproj": {}
   },
   "projects": {
-    "E:\\Tesis\\GoTrip.Web\\GoTrip.Aplicaciones\\GoTrip.Aplicaciones.csproj": {
+    "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Aplicaciones\\GoTrip.Aplicaciones.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Tesis\\GoTrip.Web\\GoTrip.Aplicaciones\\GoTrip.Aplicaciones.csproj",
+        "projectUniqueName": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Aplicaciones\\GoTrip.Aplicaciones.csproj",
         "projectName": "GoTrip.Aplicaciones",
-        "projectPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Aplicaciones\\GoTrip.Aplicaciones.csproj",
-        "packagesPath": "C:\\Users\\tomy_\\.nuget\\packages\\",
-        "outputPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Aplicaciones\\obj\\",
+        "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Aplicaciones\\GoTrip.Aplicaciones.csproj",
+        "packagesPath": "C:\\Users\\ecampanelli\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Aplicaciones\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tomy_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ecampanelli\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +22,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {
-                "projectPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj"
+              "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {
+                "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj"
               }
             }
           }
@@ -38,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -77,21 +83,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Tesis\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj": {
+    "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Tesis\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj",
+        "projectUniqueName": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj",
         "projectName": "GoTrip.Datos",
-        "projectPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj",
-        "packagesPath": "C:\\Users\\tomy_\\.nuget\\packages\\",
-        "outputPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Datos\\obj\\",
+        "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj",
+        "packagesPath": "C:\\Users\\ecampanelli\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Datos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tomy_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ecampanelli\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,14 +105,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {
-                "projectPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj"
+              "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {
+                "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj"
               }
             }
           }
@@ -115,6 +122,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -152,21 +164,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {
+    "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj",
         "projectName": "GoTrip.Dominio",
-        "projectPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj",
-        "packagesPath": "C:\\Users\\tomy_\\.nuget\\packages\\",
-        "outputPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\obj\\",
+        "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj",
+        "packagesPath": "C:\\Users\\ecampanelli\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tomy_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ecampanelli\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -174,6 +186,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -186,6 +199,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -207,21 +225,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Tesis\\GoTrip.Web\\GoTrip.Web.Server\\GoTrip.Web.Server.csproj": {
+    "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Web.Server\\GoTrip.Web.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Tesis\\GoTrip.Web\\GoTrip.Web.Server\\GoTrip.Web.Server.csproj",
+        "projectUniqueName": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Web.Server\\GoTrip.Web.Server.csproj",
         "projectName": "GoTrip.Web.Server",
-        "projectPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Web.Server\\GoTrip.Web.Server.csproj",
-        "packagesPath": "C:\\Users\\tomy_\\.nuget\\packages\\",
-        "outputPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Web.Server\\obj\\",
+        "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Web.Server\\GoTrip.Web.Server.csproj",
+        "packagesPath": "C:\\Users\\ecampanelli\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Web.Server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tomy_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ecampanelli\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -229,20 +247,21 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\Tesis\\GoTrip.Web\\GoTrip.Aplicaciones\\GoTrip.Aplicaciones.csproj": {
-                "projectPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Aplicaciones\\GoTrip.Aplicaciones.csproj"
+              "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Aplicaciones\\GoTrip.Aplicaciones.csproj": {
+                "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Aplicaciones\\GoTrip.Aplicaciones.csproj"
               },
-              "E:\\Tesis\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj": {
-                "projectPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj"
+              "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj": {
+                "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Datos\\GoTrip.Datos.csproj"
               },
-              "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {
-                "projectPath": "E:\\Tesis\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj"
+              "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj": {
+                "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\Nueva carpeta\\GoTrip.Web\\GoTrip.Dominio\\GoTrip.Dominio.csproj"
               }
             }
           }
@@ -251,6 +270,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -299,7 +323,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

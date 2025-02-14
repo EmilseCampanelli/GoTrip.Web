@@ -32,11 +32,7 @@ namespace GoTrip.Web.Server.Controllers
          
             var nuevaCategoria = new CategoriaDto
             {
-                Descripcion = dto.Descripcion,
-                UsuarioId = dto.UsuarioId,
-                CreatedDate= DateTime.UtcNow,
-                UpdatedDate= DateTime.UtcNow,
-                State= dto.State
+                Descripcion = dto.Descripcion
             };
 
             await _categoriaService.Save(nuevaCategoria);
@@ -61,25 +57,8 @@ namespace GoTrip.Web.Server.Controllers
             {
                 return NotFound("Categoría no encontrada.");
             }
-            else
-            {
-            var categoriaUpdated = await _categoriaService.Get(id);
-                dto.CreatedDate = categoriaUpdated.CreatedDate;
-            }
-
-
-            var categoriaActualizada = new CategoriaDto
-            {
-                Id = id,  
-                Descripcion = dto.Descripcion,
-                UsuarioId = dto.UsuarioId,
-                CreatedDate = dto.CreatedDate, 
-                UpdatedDate = DateTime.UtcNow,
-                State = dto.State
-            };
-
     
-            await _categoriaService.Save(categoriaActualizada);
+            await _categoriaService.Save(dto);
 
             return Ok("Categoría actualizada exitosamente.");
         }

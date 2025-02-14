@@ -8,6 +8,7 @@ namespace GoTrip.Aplicaciones.Helper
             where T : BaseEntity
         {
             entity.CreatedDate = DateTime.Now;
+            entity.UpdatedDate = DateTime.Now;
             entity.State = Dominio.Enums.BaseState.Activo;
             entity.UsuarioId = userId;
         }

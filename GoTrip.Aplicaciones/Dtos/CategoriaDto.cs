@@ -9,6 +9,5 @@ namespace GoTrip.Aplicaciones.Dtos
     public class CategoriaDto : BaseEntityDto
     {
         public string Descripcion { get; set; }
-        public List<CaracteristicaDto> Caracteristica { get; set;}
     }
 }

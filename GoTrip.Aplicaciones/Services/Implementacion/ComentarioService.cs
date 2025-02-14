@@ -74,7 +74,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         public async Task Inactivate(int id)
         {
             var comentario = await _repository.Get(id);
-            BaseEntityHelper.SetActive(comentario, _usuarioId);
+            BaseEntityHelper.SetInactive(comentario, _usuarioId);
             await _repository.Update(comentario);
         }
 

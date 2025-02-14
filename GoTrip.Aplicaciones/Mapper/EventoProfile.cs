@@ -14,6 +14,8 @@ namespace GoTrip.Aplicaciones.Mapper
         public EventoProfile()
         {
             CreateMap<EventoDto, Evento>().ReverseMap();
+            CreateMap<Ubicacion, UbicacionDto>()
+            .ReverseMap();
         }
     }
 }

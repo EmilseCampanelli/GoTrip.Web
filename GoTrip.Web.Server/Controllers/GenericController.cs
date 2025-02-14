@@ -29,8 +29,6 @@ namespace GoTrip.Web.Server.Controllers
         {
             if (dto == null) return BadRequest();
 
-            var (isValid, message) = await _entityService.Validate(null, dto);
-            if (!isValid) return BadRequest(message);
 
             return Ok(await _entityService.Save(dto));
         }
@@ -40,9 +38,6 @@ namespace GoTrip.Web.Server.Controllers
         {
             if (dto == null) return BadRequest();
             if (!await _entityService.Exists(id)) return BadRequest();
-
-            var (isValid, message) = await _entityService.Validate(id, dto);
-            if (!isValid) return BadRequest(message);
 
             await _entityService.Save(dto);
             return Ok();

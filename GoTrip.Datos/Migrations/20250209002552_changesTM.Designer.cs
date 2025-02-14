@@ -3,6 +3,7 @@ using System;
 using GoTrip.Datos.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,14 +11,50 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoTrip.Datos.Migrations
 {
     [DbContext(typeof(GoTripContext))]
-    partial class GoTripContextModelSnapshot : ModelSnapshot
+    [Migration("20250209002552_changesTM")]
+    partial class changesTM
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("GoTrip.Dominio.Entidades.Caracteristica", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoriaId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("State")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoriaId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Caracteristicas");
+                });
 
             modelBuilder.Entity("GoTrip.Dominio.Entidades.Categoria", b =>
                 {
@@ -32,10 +69,11 @@ namespace GoTrip.Datos.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("State")
-                        .HasColumnType("int");
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("UsuarioId")
@@ -96,7 +134,7 @@ namespace GoTrip.Datos.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("CategoriaId")
+                    b.Property<int>("CategoriaId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
@@ -113,12 +151,13 @@ namespace GoTrip.Datos.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("PathImagen")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("State")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UbicacionId")
+                    b.Property<int>("UbicacionId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -487,6 +526,25 @@ namespace GoTrip.Datos.Migrations
                     b.ToTable("PermisoRol");
                 });
 
+            modelBuilder.Entity("GoTrip.Dominio.Entidades.Caracteristica", b =>
+                {
+                    b.HasOne("GoTrip.Dominio.Entidades.Categoria", "Categoria")
+                        .WithMany("Caracteristicas")
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GoTrip.Dominio.Entidades.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Categoria");
+
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("GoTrip.Dominio.Entidades.Categoria", b =>
                 {
                     b.HasOne("GoTrip.Dominio.Entidades.Usuario", "Usuario")
@@ -500,11 +558,11 @@ namespace GoTrip.Datos.Migrations
 
             modelBuilder.Entity("GoTrip.Dominio.Entidades.Comentario", b =>
                 {
-                    b.HasOne("GoTrip.Dominio.Entidades.Evento", "Evento")
+                    b.HasOne("GoTrip.Dominio.Entidades.Evento", null)
                         .WithMany("Comentarios")
                         .HasForeignKey("EventoId");
 
-                    b.HasOne("GoTrip.Dominio.Entidades.PuntoTuristico", "PuntoTuristico")
+                    b.HasOne("GoTrip.Dominio.Entidades.PuntoTuristico", null)
                         .WithMany("Comentarios")
                         .HasForeignKey("PuntoTuristicoId");
 
@@ -514,10 +572,6 @@ namespace GoTrip.Datos.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Evento");
-
-                    b.Navigation("PuntoTuristico");
-
                     b.Navigation("Usuario");
                 });
 
@@ -525,11 +579,15 @@ namespace GoTrip.Datos.Migrations
                 {
                     b.HasOne("GoTrip.Dominio.Entidades.Categoria", "Categoria")
                         .WithMany()
-                        .HasForeignKey("CategoriaId");
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("GoTrip.Dominio.Entidades.Ubicacion", "Ubicacion")
                         .WithMany()
-                        .HasForeignKey("UbicacionId");
+                        .HasForeignKey("UbicacionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("GoTrip.Dominio.Entidades.Usuario", "Usuario")
                         .WithMany()
@@ -711,6 +769,11 @@ namespace GoTrip.Datos.Migrations
                         .HasForeignKey("RolesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("GoTrip.Dominio.Entidades.Categoria", b =>
+                {
+                    b.Navigation("Caracteristicas");
                 });
 
             modelBuilder.Entity("GoTrip.Dominio.Entidades.Evento", b =>

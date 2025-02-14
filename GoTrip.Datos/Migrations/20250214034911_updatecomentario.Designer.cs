@@ -3,6 +3,7 @@ using System;
 using GoTrip.Datos.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoTrip.Datos.Migrations
 {
     [DbContext(typeof(GoTripContext))]
-    partial class GoTripContextModelSnapshot : ModelSnapshot
+    [Migration("20250214034911_updatecomentario")]
+    partial class updatecomentario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

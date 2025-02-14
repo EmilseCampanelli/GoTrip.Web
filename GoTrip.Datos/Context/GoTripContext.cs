@@ -30,11 +30,10 @@ namespace GoTrip.Datos.Context
 
         public DbSet<Evento> Eventos { get; set; }
 
-        public DbSet<Caracteristica> Caracteristicas { get; set; }
-
         public DbSet<PlanViaje> PlanViajes { get; set; }
 
         public DbSet<LineaPuntoTuristico> LineaPuntoTuristicos { get; set; }
+
         public DbSet<LineaRecorrido> LineaRecorridos { get; set; }
 
     }

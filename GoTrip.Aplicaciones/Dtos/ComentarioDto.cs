@@ -13,5 +13,7 @@ namespace GoTrip.Aplicaciones.Dtos
         public int CantidadEstrellas { get; set; }
         public int? PuntoTuristicoId { get; set; }
         public int? EventoId { get; set; }
+        public PuntoTuristicoDto? Punto { get; set; }
+        public EventoDto? Evento { get; set; }
     }
 }

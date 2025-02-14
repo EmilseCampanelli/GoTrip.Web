@@ -23,73 +23,95 @@ namespace GoTrip.Web.Server.Controllers
         [HttpPost("alta")]
         public async Task<IActionResult> CrearCategoria([FromBody] CategoriaDto dto)
         {
-            
-            if (dto == null || string.IsNullOrEmpty(dto.Descripcion))
+            try
             {
-                return BadRequest("Datos inválidos.");
+                if (dto == null || string.IsNullOrEmpty(dto.Descripcion))
+                {
+                    return BadRequest("Datos inválidos.");
+                }
+
+
+                var nuevaCategoria = new CategoriaDto
+                {
+                    Descripcion = dto.Descripcion
+                };
+
+                await _categoriaService.Save(nuevaCategoria);
+
+                return Ok("Categoría creada exitosamente.");
             }
-
-         
-            var nuevaCategoria = new CategoriaDto
+            catch (Exception e)
             {
-                Descripcion = dto.Descripcion
-            };
-
-            await _categoriaService.Save(nuevaCategoria);
-
-            return Ok("Categoría creada exitosamente.");
-
-
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPut("update/{id}")]
         public async Task<IActionResult> ActualizarCategoria(int id, [FromBody] CategoriaDto dto)
         {
-           
-            if (dto == null || string.IsNullOrEmpty(dto.Descripcion))
+            try
             {
-                return BadRequest("Datos inválidos.");
-            }
+                if (dto == null || string.IsNullOrEmpty(dto.Descripcion))
+                {
+                    return BadRequest("Datos inválidos.");
+                }
 
-           
-            var existeCategoria = await _categoriaService.Exists(id);
-            if (!existeCategoria)
+
+                var existeCategoria = await _categoriaService.Exists(id);
+                if (!existeCategoria)
+                {
+                    return NotFound("Categoría no encontrada.");
+                }
+
+                await _categoriaService.Save(dto);
+
+                return Ok("Categoría actualizada exitosamente.");
+            }
+            catch (Exception e)
             {
-                return NotFound("Categoría no encontrada.");
+                return BadRequest(e.Message);
             }
-    
-            await _categoriaService.Save(dto);
-
-            return Ok("Categoría actualizada exitosamente.");
         }
 
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> EliminarCategoria(int id)
         {
-           
-            var existeCategoria = await _categoriaService.Exists(id);
-            if (!existeCategoria)
+            try
             {
-                return NotFound("Categoría no encontrada.");
+                var existeCategoria = await _categoriaService.Exists(id);
+                if (!existeCategoria)
+                {
+                    return NotFound("Categoría no encontrada.");
+                }
+
+                await _categoriaService.Delete(id);
+
+                return Ok("Categoría eliminada exitosamente.");
             }
-
-       
-            await _categoriaService.Delete(id);
-
-            return Ok("Categoría eliminada exitosamente.");
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("active")]
         public async Task<IActionResult> ListarCategoriasActivas()
         {
-            var categoriasActivas = await _categoriaService.GetActiveCategories();
-
-            if (categoriasActivas == null || !categoriasActivas.Any())
+            try
             {
-                return NotFound("No hay categorías activas.");
-            }
+                var categoriasActivas = await _categoriaService.GetActiveCategories();
 
-            return Ok(categoriasActivas);
+                if (categoriasActivas == null || !categoriasActivas.Any())
+                {
+                    return NotFound("No hay categorías activas.");
+                }
+
+                return Ok(categoriasActivas);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
     }

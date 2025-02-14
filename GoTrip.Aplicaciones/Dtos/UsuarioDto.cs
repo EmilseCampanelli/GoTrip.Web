@@ -12,5 +12,6 @@ namespace GoTrip.Aplicaciones.Dtos
         public string Telefono { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public BaseState State { get; set; }
+        public bool? IsNoVidente { get; set; }
     }
 }

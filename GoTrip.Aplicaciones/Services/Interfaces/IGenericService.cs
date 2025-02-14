@@ -11,5 +11,6 @@ namespace GoTrip.Aplicaciones.Services.Interfaces
         Task Inactivate(int id);
         Task<TDto> Save(TDto dto);
         Task<(bool isValid, string message)> Validate(int? id, TDto dto);
+        Task<List<TDto>> GetAll();
     }
 }

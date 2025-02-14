@@ -113,5 +113,10 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             var model = await _repository.Get(id);
             return _mapper.Map<ComentarioDto>(model);
         }
+
+        public Task<List<ComentarioDto>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

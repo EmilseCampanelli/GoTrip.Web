@@ -104,5 +104,11 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             // Por ejemplo, verificar que las fechas sean válidas o que las ubicaciones existan.
             throw new NotImplementedException();
         }
+
+        public async Task<List<EventoDto>> GetAll()
+        {
+            var evento = await _eventoRepository.GetAll();
+            return _mapper.Map<List<EventoDto>>(evento);
+        }
     }
 }

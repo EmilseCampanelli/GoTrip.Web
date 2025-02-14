@@ -105,8 +105,10 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
                     message: string.Join(Environment.NewLine, validations.Where(x => !x.isValid).Select(x => x.message)));
         }
 
-      
-
-    
+        public async Task<List<CategoriaDto>> GetAll()
+        {
+            var categoria = await _repository.GetAll();
+            return _mapper.Map<List<CategoriaDto>>(categoria);
+        }
     }
 }

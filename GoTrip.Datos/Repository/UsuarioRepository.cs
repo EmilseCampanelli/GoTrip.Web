@@ -1,4 +1,5 @@
-﻿using GoTrip.Datos.Context;
+﻿using BCrypt.Net;
+using GoTrip.Datos.Context;
 using GoTrip.Dominio.Contratos;
 using GoTrip.Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
@@ -64,5 +65,16 @@ namespace GoTrip.Datos.Repository
             await Save();
             return item;
         }
+
+        public async Task<Usuario> GetUserByUsername(string userName)
+        {
+            return await _dbSet.Where(u => u.UserName == userName).FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> ValidatePasswordAsync(Usuario user, string password)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, user.Password);
+        }
+
     }
 }

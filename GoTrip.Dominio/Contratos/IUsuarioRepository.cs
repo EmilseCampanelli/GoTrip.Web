@@ -24,5 +24,9 @@ namespace GoTrip.Dominio.Contratos
         Task Delete(Usuario item);
 
         Task Save();
+
+        Task<Usuario> GetUserByUsername(string username);
+
+        Task<bool> ValidatePasswordAsync(Usuario user, string password);
     }
 }

@@ -129,5 +129,10 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             return (isValid: validations.All(x => x.isValid),
                     message: string.Join(Environment.NewLine, validations.Where(x => !x.isValid).Select(x => x.message)));
         }
+
+        public Task<List<PlanViajeDto>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

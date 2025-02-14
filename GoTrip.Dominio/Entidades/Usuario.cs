@@ -11,5 +11,6 @@ namespace GoTrip.Dominio.Entidades
         public DateTime FechaNacimiento { get; set; }
         public string Telefono { get; set; }
         public BaseState State { get; set; }
+        public bool? IsNoVidente { get; set; }
     }
 }

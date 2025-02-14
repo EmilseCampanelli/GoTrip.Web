@@ -9,6 +9,7 @@ using GoTrip.Dominio.Enums;
 using Org.BouncyCastle.Crypto.Generators;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +60,13 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
 
         public async Task<UsuarioDto> Save(UsuarioDto dto)
         {
+            var user = await _repository.GetUserByUsername(dto.UserName);
+
+            if(user!= null)
+            {
+                throw new Exception("El usuario que desea ingresar ya existe.");
+            }
+
             Usuario usuario = new Usuario();
             if (dto.Id.Equals(0))
             {

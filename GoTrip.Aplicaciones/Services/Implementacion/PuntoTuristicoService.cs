@@ -145,5 +145,11 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             return (isValid: validations.All(x => x.isValid),
                     message: string.Join(Environment.NewLine, validations.Where(x => !x.isValid).Select(x => x.message)));
         }
+
+        public async Task<List<PuntoTuristicoDto>> GetAll()
+        {
+            var puntoTuristicos = await _puntosRepository.GetAll();
+            return _mapper.Map<List<PuntoTuristicoDto>>(puntoTuristicos);
+        }
     }
 }

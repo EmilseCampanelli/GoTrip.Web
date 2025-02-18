@@ -13,5 +13,6 @@ namespace GoTrip.Aplicaciones.Dtos
         public string Token { get; set; }
         public bool IsAuthenticated { get; set; }
         public bool IsNoVidente { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

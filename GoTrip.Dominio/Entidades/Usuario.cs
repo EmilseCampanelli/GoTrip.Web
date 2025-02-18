@@ -12,5 +12,6 @@ namespace GoTrip.Dominio.Entidades
         public string Telefono { get; set; }
         public BaseState State { get; set; }
         public bool? IsNoVidente { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

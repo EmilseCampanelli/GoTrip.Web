@@ -13,5 +13,6 @@ namespace GoTrip.Aplicaciones.Dtos
         public DateTime FechaNacimiento { get; set; }
         public BaseState State { get; set; }
         public bool? IsNoVidente { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

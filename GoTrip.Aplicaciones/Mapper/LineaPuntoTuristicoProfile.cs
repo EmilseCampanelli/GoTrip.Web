@@ -13,7 +13,7 @@ namespace GoTrip.Aplicaciones.Mapper
     {
         public LineaPuntoTuristicoProfile()
         {
-            CreateMap<LineaPuntoTuristicoDto, LineaPuntoTuristico>().ReverseMap();
+            CreateMap<LineaPlanViajeDto, LineaPlanViaje>().ForMember(e => e.PlanViaje, u => u.Ignore()).ReverseMap();
         }
     }
 }

@@ -604,7 +604,7 @@ namespace GoTrip.Datos.Migrations
                         .HasForeignKey("EventoId");
 
                     b.HasOne("GoTrip.Dominio.Entidades.PlanViaje", "PlanViaje")
-                        .WithMany("LineaPuntos")
+                        .WithMany("LineaPlanViaje")
                         .HasForeignKey("PlanViajeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -772,7 +772,7 @@ namespace GoTrip.Datos.Migrations
 
             modelBuilder.Entity("GoTrip.Dominio.Entidades.PlanViaje", b =>
                 {
-                    b.Navigation("LineaPuntos");
+                    b.Navigation("LineaPlanViaje");
                 });
 
             modelBuilder.Entity("GoTrip.Dominio.Entidades.PuntoTuristico", b =>

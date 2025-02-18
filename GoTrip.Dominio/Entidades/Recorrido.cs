@@ -4,6 +4,7 @@
     {
         public int PlanViajeId { get; set; }
         public virtual PlanViaje PlanViaje { get; set; }
-        public virtual List<LineaRecorrido> LineaRecorridos { get; set; }
+
+        //Lista de LineaPlanViaje
     }
 }

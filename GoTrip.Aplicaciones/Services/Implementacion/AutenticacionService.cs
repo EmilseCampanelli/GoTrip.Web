@@ -43,6 +43,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             response.IsAuthenticated = true;
             response.UserId = usuario.Id;
             response.IsNoVidente = (usuario.IsNoVidente != null ? usuario.IsNoVidente.Value : false);
+            response.IsAdmin = usuario.IsAdmin;
 
             return response;
 

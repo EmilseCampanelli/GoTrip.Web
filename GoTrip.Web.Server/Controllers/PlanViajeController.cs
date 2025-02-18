@@ -13,6 +13,18 @@ namespace GoTrip.Web.Server.Controllers
         public PlanViajeController(IPlanViajeService entityService) : base(entityService)
         {
             _planViajeService = entityService;
-        }        
+        }
+
+        [HttpPost("AddItemsPlanViaje")]
+        public async Task<IActionResult> AddItems(List<LineaPlanViajeDto> lineaPlanViajeDtos, int idPlanViaje)
+        {
+            try
+            {
+                return Ok(await _planViajeService.AddItem(lineaPlanViajeDtos, idPlanViaje));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
-}

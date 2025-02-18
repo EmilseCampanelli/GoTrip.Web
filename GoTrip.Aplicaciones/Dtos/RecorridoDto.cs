@@ -9,6 +9,6 @@ namespace GoTrip.Aplicaciones.Dtos
     public class RecorridoDto : BaseEntityDto
     {
         public int PlanViajeId {  get; set; }
-        public List<LineaRecorridoDto> LineasRecorridos { get; set; }
+        public PlanViajeDto PlanViaje { get; set; }
     }
 }

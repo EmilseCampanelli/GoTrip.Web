@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace GoTrip.Dominio.Contratos
 {
-    public interface IPlanViajeRepository : IRepository<PlanViaje>
+    public interface IPlanViajeRepository 
     {
+        PlanViaje GetPlanViaje(int id);
     }
 }

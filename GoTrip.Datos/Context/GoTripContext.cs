@@ -11,6 +11,29 @@ namespace GoTrip.Datos.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<PuntoTuristico>()
+                .Navigation(e => e.Categoria)
+                .AutoInclude();
+            modelBuilder.Entity<PuntoTuristico>()
+                .Navigation(e => e.Ubicacion)
+                .AutoInclude();
+            modelBuilder.Entity<PuntoTuristico>()
+                .Navigation(e => e.Usuario)
+                .AutoInclude();
+            modelBuilder.Entity<Evento>()
+               .Navigation(e => e.Categoria)
+               .AutoInclude();
+            modelBuilder.Entity<Evento>()
+                .Navigation(e => e.Ubicacion)
+                .AutoInclude();
+            modelBuilder.Entity<Evento>()
+                .Navigation(e => e.Usuario)
+                .AutoInclude();
+
+            modelBuilder.Entity<PlanViaje>()
+                .Navigation(e => e.LineaPuntos)
+                .AutoInclude();
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -32,9 +55,7 @@ namespace GoTrip.Datos.Context
 
         public DbSet<PlanViaje> PlanViajes { get; set; }
 
-        public DbSet<LineaPuntoTuristico> LineaPuntoTuristicos { get; set; }
-
-        public DbSet<LineaRecorrido> LineaRecorridos { get; set; }
+        public DbSet<LineaPlanViaje> LineaPuntoTuristicos { get; set; }
 
     }
 }

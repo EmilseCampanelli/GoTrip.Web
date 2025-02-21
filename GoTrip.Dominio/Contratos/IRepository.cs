@@ -7,7 +7,7 @@ namespace GoTrip.Dominio.Contratos
     {
         Task<TEntity> Add(TEntity item);
 
-        Task<TEntity> Update(TEntity item);
+        TEntity Update(TEntity item);
 
         Task<TEntity> Get(int id);
 
@@ -19,5 +19,9 @@ namespace GoTrip.Dominio.Contratos
         Task Delete(TEntity item);
 
         Task Save();
+
+        void AddRangeAsync(List<TEntity> items);
+
+        void DeleteRange(List<TEntity> entities);
     }
 }

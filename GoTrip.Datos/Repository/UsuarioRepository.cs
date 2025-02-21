@@ -73,7 +73,8 @@ namespace GoTrip.Datos.Repository
 
         public async Task<bool> ValidatePasswordAsync(Usuario user, string password)
         {
-            return BCrypt.Net.BCrypt.Verify(password, user.Password);
+            var model = await _context.Usuarios.FindAsync(user.Id);
+            return model.Password == password;
         }
 
     }

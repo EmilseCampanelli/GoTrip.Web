@@ -18,9 +18,7 @@ namespace GoTrip.Datos.Repository
         public async Task<PuntoTuristico> GetPunto(int id)
         {
             return await _dbSet
-                .Include(p => p.Ubicacion)
                 .Include(p => p.Categoria)
-                .Include(p => p.Comentarios)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
@@ -28,9 +26,7 @@ namespace GoTrip.Datos.Repository
         public async Task<IEnumerable<PuntoTuristico>> GetPuntosTuristicos()
         {
             return await _dbSet
-                .Include(p => p.Ubicacion)
                 .Include(p => p.Categoria)
-                .Include(p => p.Comentarios)
                 .ToListAsync();
         }
     }

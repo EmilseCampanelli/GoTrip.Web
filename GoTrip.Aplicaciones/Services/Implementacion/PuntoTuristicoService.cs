@@ -27,7 +27,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         {
             var puntoTuristico = await _puntosRepository.Get(id);
             BaseEntityHelper.SetActive(puntoTuristico, _usuarioId);
-            await _puntosRepository.Update(puntoTuristico);
+            _puntosRepository.Update(puntoTuristico);
         }
 
         public async Task<bool> Exists(int id)
@@ -47,7 +47,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         {
             var puntoTuristico = await _puntosRepository.Get(id);
             BaseEntityHelper.SetInactive(puntoTuristico, _usuarioId);
-            await _puntosRepository.Update(puntoTuristico);
+            _puntosRepository.Update(puntoTuristico);
         }
 
         public async Task<PuntoTuristicoDto> Save(PuntoTuristicoDto dto)
@@ -64,7 +64,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             {
                 var updatedPuntoTuristico = _mapper.Map<PuntoTuristico>(dto);
                 BaseEntityHelper.SetUpdated(updatedPuntoTuristico, _usuarioId);
-                puntoTuristico = await _puntosRepository.Update(updatedPuntoTuristico);
+                puntoTuristico = _puntosRepository.Update(updatedPuntoTuristico);
             }
 
             return _mapper.Map<PuntoTuristicoDto>(puntoTuristico);
@@ -76,7 +76,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
 
             var puntoTuristico = await _puntosRepository.Get(id);
             puntoTuristico.PathImagen = String.Join(",", pathImages);
-            await _puntosRepository.Update(puntoTuristico);
+            _puntosRepository.Update(puntoTuristico);
 
             return String.Join(",", pathImages);
         }

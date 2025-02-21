@@ -62,23 +62,27 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         {
             var user = await _repository.GetUserByUsername(dto.UserName);
 
-            if(user!= null)
+            if (user != null)
             {
-                throw new Exception("El usuario que desea ingresar ya existe.");
+                if (user.Email == dto.Email || user.Documento == dto.Documento)
+                {
+                    throw new Exception("El usuario que desea ingresar ya existe.");
+                }
             }
+
 
             Usuario usuario = new Usuario();
             if (dto.Id.Equals(0))
             {
                 var newUsuario = _mapper.Map<Usuario>(dto);
                 newUsuario.State = BaseState.Activo;
-                newUsuario.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+                newUsuario.Password = dto.Password;
                 usuario = await _repository.Add(newUsuario);
             }
             else
             {
                 var updatedUsuario = _mapper.Map<Usuario>(dto);
-                updatedUsuario.Password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+                updatedUsuario.Password = dto.Password;
                 usuario = await _repository.Update(updatedUsuario);
             }
             return _mapper.Map<UsuarioDto>(usuario);

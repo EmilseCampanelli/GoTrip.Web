@@ -31,7 +31,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         {
             var categoria = await _repository.Get(id);
             BaseEntityHelper.SetActive(categoria, _usuarioId);
-            await _repository.Update(categoria);
+            _repository.Update(categoria);
         }
 
         public async Task<bool> Exists(int id)
@@ -49,7 +49,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         {
             var categoria = await _repository.Get(id);
             BaseEntityHelper.SetInactive(categoria, _usuarioId);
-            await _repository.Update(categoria);
+            _repository.Update(categoria);
         }
 
         public async Task<CategoriaDto> Save(CategoriaDto dto)
@@ -68,7 +68,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
               
                 categoria = _mapper.Map<Categoria>(dto);
                 BaseEntityHelper.SetUpdated(categoria, _usuarioId);
-                await _repository.Update(categoria);
+                _repository.Update(categoria);
             }
 
       

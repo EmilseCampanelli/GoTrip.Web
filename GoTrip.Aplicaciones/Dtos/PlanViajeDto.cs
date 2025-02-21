@@ -14,7 +14,6 @@ namespace GoTrip.Aplicaciones.Dtos
         public DateTime FechaFin { get; set; }
         public string Descripcion { get; set; }
         public List<LineaPlanViajeDto> LineaPlanViaje { get; set; }
-        public EstadoPlanViaje Estado { get; set; }
         public List<RecorridoDto>? Recorridos { get; set; }
     }
 }

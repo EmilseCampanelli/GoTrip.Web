@@ -1,4 +1,5 @@
 ﻿using GoTrip.Aplicaciones.Dtos;
+using GoTrip.Aplicaciones.Services.Implementacion;
 using GoTrip.Aplicaciones.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,16 +16,53 @@ namespace GoTrip.Web.Server.Controllers
             _planViajeService = entityService;
         }
 
-        [HttpPost("AddItemsPlanViaje")]
-        public async Task<IActionResult> AddItems(List<LineaPlanViajeDto> lineaPlanViajeDtos, int idPlanViaje)
+        [HttpGet("GetAll")]
+        public virtual async Task<ActionResult<PlanViajeDto>> GetAll()
         {
             try
             {
-                return Ok(await _planViajeService.AddItem(lineaPlanViajeDtos, idPlanViaje));
+                var result = await _planViajeService.GetAll();
+                if (result == null) return NotFound();
+                return Ok(result);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(e.Message);
             }
+
         }
+
+        [HttpGet("GetActive")]
+        public virtual ActionResult<PlanViajeDto> GetActive(int usuarioId)
+        {
+            try
+            {
+                var result =  _planViajeService.GetActives(usuarioId);
+                if (result == null) return NotFound();
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+        }
+
+        [HttpGet("GetAllByUser")]
+        public virtual ActionResult<PlanViajeDto> GetAllByUser(int usuarioId)
+        {
+            try
+            {
+                var result = _planViajeService.GetAllByUser(usuarioId);
+                if (result == null) return NotFound();
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+        }
+
     }
+}

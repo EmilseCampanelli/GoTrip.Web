@@ -36,5 +36,19 @@ namespace GoTrip.Web.Server.Controllers
 
         }
 
+        [HttpPost("PutImages")]
+        public async Task<IActionResult> PutImages([FromForm] List<IFormFile> images, int idEvento)
+        {
+            try
+            {
+                return Ok(await _eventoService.PutImage(images, idEvento));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+        }
+
     }
 }

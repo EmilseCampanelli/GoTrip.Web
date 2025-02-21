@@ -18,11 +18,11 @@ namespace GoTrip.Web.Server.Controllers
         }
 
         [HttpPost("PutImages")]
-        public async Task<IActionResult> PutImages([FromForm] List<IFormFile> images, int id)
+        public async Task<IActionResult> PutImages([FromForm] List<IFormFile> images, int idPuntoTuristico)
         {
             try
             {
-                return Ok(await _puntoTuristicoService.PutImage(images, id));
+                return Ok(await _puntoTuristicoService.PutImage(images, idPuntoTuristico));
             }
             catch (Exception e)
             {
@@ -30,6 +30,7 @@ namespace GoTrip.Web.Server.Controllers
             }
             
         }
+
         [HttpGet("GetAll")]
         public virtual async Task<ActionResult<PuntoTuristicoDto>> GetAll()
         {

@@ -68,14 +68,14 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         {
             var comentario = await _repository.Get(id);
             BaseEntityHelper.SetActive(comentario, _usuarioId);
-            await _repository.Update(comentario);
+            _repository.Update(comentario);
         }
 
         public async Task Inactivate(int id)
         {
             var comentario = await _repository.Get(id);
             BaseEntityHelper.SetInactive(comentario, _usuarioId);
-            await _repository.Update(comentario);
+            _repository.Update(comentario);
         }
 
         public async Task<ComentarioDto> Save(ComentarioDto dto)
@@ -91,7 +91,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             {
                 var updatedComentario = _mapper.Map<Comentario>(dto);
                 BaseEntityHelper.SetUpdated(updatedComentario, _usuarioId);
-                await _repository.Update(updatedComentario);
+                _repository.Update(updatedComentario);
             }
             return _mapper.Map<ComentarioDto>(dto);
         }

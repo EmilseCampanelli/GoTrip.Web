@@ -2,11 +2,13 @@
 {
     public class PuntoTuristico : BaseEntity
     {
+        public string Nombre { get; set; }
+
         public string Descripcion { get; set; }
 
-        public int? UbicacionId { get; set; }
+        public string Latitud { get; set; }
 
-        public virtual Ubicacion Ubicacion { get; set; }
+        public string Longitud { get; set; }
 
         public int? CategoriaId { get; set; }
 
@@ -14,7 +16,7 @@
 
         public string? PathImagen { get; set; }
 
-        public virtual List<Comentario> Comentarios { get; set; }
+        //public virtual List<Comentario> Comentarios { get; set; }
 
     }
 }

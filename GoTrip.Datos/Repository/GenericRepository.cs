@@ -25,13 +25,13 @@ namespace GoTrip.Datos.Repository
             return item;
         }
 
-        public async Task<TEntity> Update(TEntity item)
+        public TEntity Update(TEntity item)
         {
             var localEntity = _dbSet.Local.FirstOrDefault(x => x.Id == item.Id);
             if (localEntity != null)
                 _context.Entry(localEntity).State = EntityState.Detached;
             _context.Entry(item).State = EntityState.Modified;
-            await Save();
+            _context.SaveChanges();
             return item;
         }
 
@@ -65,6 +65,25 @@ namespace GoTrip.Datos.Repository
         public async Task Save()
         {
             await _context.SaveChangesAsync();
+        }
+
+        public void AddRangeAsync(List<TEntity> items)
+        {
+            if(items == null || !items.Any())
+            {
+                throw new ArgumentException("La lista de entidades no puede estar vacía.", nameof(items));
+
+            }
+            _dbSet.AddRange(items);
+            _context.SaveChanges();
+        }
+        public void DeleteRange(List<TEntity> entities)
+        {
+            if (entities == null || !entities.Any())
+                throw new ArgumentException("La lista de entidades no puede estar vacía.", nameof(entities));
+
+            _dbSet.RemoveRange(entities);
+             _context.SaveChanges();
         }
     }
 }

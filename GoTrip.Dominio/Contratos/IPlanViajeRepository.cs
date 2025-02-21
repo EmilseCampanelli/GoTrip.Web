@@ -10,5 +10,8 @@ namespace GoTrip.Dominio.Contratos
     public interface IPlanViajeRepository 
     {
         PlanViaje GetPlanViaje(int id);
+        List<LineaPlanViaje> GetLineaPlanViaje(int idPlanViaje);
+        List<PlanViaje> GetAllByUser(int userId);
+        List<PlanViaje> GetAllActivesByUser(int userId);
     }
 }

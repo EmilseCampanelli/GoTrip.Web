@@ -10,9 +10,9 @@ namespace GoTrip.Aplicaciones.Services.Interfaces
     public interface IPlanViajeService : IGenericService<PlanViajeDto>
     {
         List<PlanViajeDto> GetByDates(DateTime startDate, DateTime endDate, UsuarioDto usuario);
-        List<RecorridoDto> GetRecorridosByPlanViaje(int idPlanViaje);
-        Task<PlanViajeDto> AddItem(List<LineaPlanViajeDto> lineas, int idPlanViaje);
-        PlanViajeDto AddRecorridos(List<RecorridoDto> recorrido, int idPlanViaje);
-        PlanViajeDto DeleteItem(int idPlanViaje, LineaPlanViajeDto lineaPlanViajeDto);
+        void AddItem(List<LineaPlanViajeDto> lineas, int idPlanViaje);
+        void DeleteItem(int idPlanViaje);
+        List<PlanViajeDto> GetActives(int userId);
+        List<PlanViajeDto> GetAllByUser(int userId);
     }
 }

@@ -5,6 +5,7 @@ using GoTrip.Aplicaciones.Services.Interfaces;
 using GoTrip.Dominio.Contratos;
 using GoTrip.Dominio.Entidades;
 using GoTrip.Dominio.Enums;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Threading.Tasks;
 
@@ -50,7 +51,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
 
             evento.State = BaseState.Activo; // Asignar el estado "Activo"
             BaseEntityHelper.SetUpdated(evento, _usuarioId);
-            await _eventoRepository.Update(evento);
+            _eventoRepository.Update(evento);
         }
 
         public async Task Inactivate(int id)
@@ -63,7 +64,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
 
             evento.State = BaseState.Inactivo; // Asignar el estado "Inactivo"
             BaseEntityHelper.SetUpdated(evento, _usuarioId);
-            await _eventoRepository.Update(evento);
+            _eventoRepository.Update(evento);
         }
 
 
@@ -92,7 +93,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
 
                 _mapper.Map(dto, evento);
                 BaseEntityHelper.SetUpdated(evento, _usuarioId);
-                await _eventoRepository.Update(evento);
+                _eventoRepository.Update(evento);
             }
 
             return _mapper.Map<EventoDto>(evento);
@@ -109,6 +110,69 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         {
             var evento = await _eventoRepository.GetAll();
             return _mapper.Map<List<EventoDto>>(evento);
+        }
+
+        public async Task<string> PutImage(List<IFormFile> images, int id)
+        {
+            var pathImages = await SavePicture(images);
+
+            var evento = await _eventoRepository.Get(id);
+            evento.PathImagen = String.Join(",", pathImages);
+            _eventoRepository.Update(evento);
+
+            return String.Join(",", pathImages);
+        }
+
+        public async Task<List<string>> SavePicture(List<IFormFile> images)
+        {
+            var stringPath = new List<string>();
+
+            if (!images.Any())
+            {
+                return stringPath;
+            }
+
+            foreach (var image in images)
+            {
+                if (image == null || image.Length == 0)
+                {
+                    continue;
+                }
+
+                try
+                {
+                    var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "Images");
+
+                    if (!Directory.Exists(uploadFolder))
+                    {
+                        Directory.CreateDirectory(uploadFolder);
+                    }
+
+                    var imageName = $"{Path.GetFileNameWithoutExtension(image.FileName)}_{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
+                    var imagePath = Path.Combine(uploadFolder, imageName);
+
+                    if (File.Exists(imagePath))
+                    {
+                        continue;
+                    }
+
+                    using (var stream = new FileStream(imagePath, FileMode.CreateNew, FileAccess.Write, FileShare.None))
+                    {
+                        await image.CopyToAsync(stream);
+                    }
+
+                    var relativePath = Path.Combine(uploadFolder, imageName);
+                    Path.Combine(uploadFolder, Guid.NewGuid().ToString() + Path.GetExtension(image.FileName));
+                    stringPath.Add(relativePath);
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al guardar la imagen", ex);
+                }
+            }
+
+            return stringPath;
         }
     }
 }

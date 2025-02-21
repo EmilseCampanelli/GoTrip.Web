@@ -15,23 +15,23 @@ namespace GoTrip.Datos.Context
                 .Navigation(e => e.Categoria)
                 .AutoInclude();
             modelBuilder.Entity<PuntoTuristico>()
-                .Navigation(e => e.Ubicacion)
-                .AutoInclude();
-            modelBuilder.Entity<PuntoTuristico>()
                 .Navigation(e => e.Usuario)
                 .AutoInclude();
             modelBuilder.Entity<Evento>()
                .Navigation(e => e.Categoria)
                .AutoInclude();
             modelBuilder.Entity<Evento>()
-                .Navigation(e => e.Ubicacion)
-                .AutoInclude();
-            modelBuilder.Entity<Evento>()
                 .Navigation(e => e.Usuario)
                 .AutoInclude();
 
             modelBuilder.Entity<PlanViaje>()
-                .Navigation(e => e.LineaPuntos)
+                .Navigation(e => e.LineaPlanViaje)
+                .AutoInclude();
+            modelBuilder.Entity<LineaPlanViaje>()
+                .Navigation(e => e.PuntoTuristico)
+                .AutoInclude();
+            modelBuilder.Entity<LineaPlanViaje>()
+                .Navigation(e => e.Evento)
                 .AutoInclude();
 
             base.OnModelCreating(modelBuilder);

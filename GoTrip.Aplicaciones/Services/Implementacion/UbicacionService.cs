@@ -42,7 +42,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
 
                 _mapper.Map(dto, ubicacion);
                 BaseEntityHelper.SetUpdated(ubicacion, _usuarioId);
-                await _repository.Update(ubicacion);
+                 _repository.Update(ubicacion);
             }
 
             return ubicacion.Id;

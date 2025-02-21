@@ -38,7 +38,10 @@ namespace GoTrip.Web.Server.Controllers
         {
             if (dto == null) return BadRequest();
             if (!await _entityService.Exists(id)) return BadRequest();
-
+            if (dto.Id.Equals(0))
+            {
+                dto.Id = id;
+            } 
             await _entityService.Save(dto);
             return Ok();
         }

@@ -15,7 +15,7 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
     {
         private readonly IRepository<Evento> _eventoRepository;
         private readonly IMapper _mapper;
-        private const int _usuarioId = 2; // TODO: Modificar por el código del usuario autenticado
+        private const int _usuarioId = 1; // TODO: Modificar por el código del usuario autenticado
 
         public EventoService(
             IRepository<Evento> eventoRepository,

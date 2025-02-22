@@ -99,7 +99,8 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
 
                 try
                 {
-                    var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "Images");
+                    var uploadFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "MiAppImages");
+
 
                     if (!Directory.Exists(uploadFolder))
                     {

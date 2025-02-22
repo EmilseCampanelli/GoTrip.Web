@@ -44,26 +44,14 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         public async Task Activate(int id)
         {
             var evento = await _eventoRepository.Get(id);
-            if (evento == null)
-            {
-                throw new KeyNotFoundException("El evento no existe.");
-            }
-
-            evento.State = BaseState.Activo; // Asignar el estado "Activo"
-            BaseEntityHelper.SetUpdated(evento, _usuarioId);
+            BaseEntityHelper.SetActive(evento, _usuarioId);
             _eventoRepository.Update(evento);
         }
 
         public async Task Inactivate(int id)
         {
             var evento = await _eventoRepository.Get(id);
-            if (evento == null)
-            {
-                throw new KeyNotFoundException("El evento no existe.");
-            }
-
-            evento.State = BaseState.Inactivo; // Asignar el estado "Inactivo"
-            BaseEntityHelper.SetUpdated(evento, _usuarioId);
+            BaseEntityHelper.SetInactive(evento, _usuarioId);
             _eventoRepository.Update(evento);
         }
 

@@ -17,6 +17,6 @@ namespace GoTrip.Aplicaciones.Services.Interfaces
 
         Task Delete(int id);
 
-        Task<IEnumerable<CategoriaDto>> GetActiveCategories();
+        Task<List<CategoriaDto>> GetActiveCategories();
     }
 }

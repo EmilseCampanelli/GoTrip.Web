@@ -84,13 +84,10 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
             }
         }
 
-        public async Task<IEnumerable<CategoriaDto>> GetActiveCategories()
+        public async Task<List<CategoriaDto>> GetActiveCategories()
         {
-            var activeCategories = _repository
-                .GetFiltered(c => c.State == Dominio.Enums.BaseState.Activo)
-                .ToList();  
-
-            return _mapper.Map<IEnumerable<CategoriaDto>>(activeCategories);
+            var categoria = await _repository.GetAll();
+            return _mapper.Map<List<CategoriaDto>>(categoria);
         }
 
         public async Task<(bool isValid, string message)> Validate(int? id, CategoriaDto dto)

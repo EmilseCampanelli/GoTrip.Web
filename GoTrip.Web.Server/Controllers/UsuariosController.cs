@@ -73,6 +73,10 @@ namespace GoTrip.Web.Server.Controllers
             {
                 if (dto == null) return BadRequest();
                 if (!await _entityService.Exists(id)) return BadRequest();
+                if (dto.Id.Equals(0))
+                {
+                    dto.Id = id;
+                }
 
                 var (isValid, message) = await _entityService.Validate(id, dto);
                 if (!isValid) return BadRequest(message);

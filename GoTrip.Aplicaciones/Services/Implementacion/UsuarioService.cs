@@ -61,7 +61,9 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         public async Task<UsuarioDto> Save(UsuarioDto dto)
         {
             var user = await _repository.GetUserByUsername(dto.UserName);
-
+            var userEmailRepetido = await _repository.GetUserByEmail(dto.Email);
+            var userDocumentoRepetido = await _repository.GetUserByDocumento(dto.Documento);
+            
             Usuario usuario = new Usuario();
             if (dto.Id.Equals(0))
             {
@@ -72,13 +74,27 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
                         throw new Exception("El usuario que desea ingresar ya existe.");
                     }
                 }
+                if (userEmailRepetido != null)
+                {
+                    if (userEmailRepetido.Email == dto.Email || userEmailRepetido.Documento == dto.Documento || userEmailRepetido.UserName == dto.UserName)
+                    {
+                        throw new Exception("El usuario que desea ingresar ya existe.");
+                    }
+                }
+                if (userDocumentoRepetido != null)
+                {
+                    if (userDocumentoRepetido.Email == dto.Email || userDocumentoRepetido.Documento == dto.Documento || userDocumentoRepetido.UserName == dto.UserName)
+                    {
+                        throw new Exception("El usuario que desea ingresar ya existe.");
+                    }
+                }
                 var newUsuario = _mapper.Map<Usuario>(dto);
                 newUsuario.State = BaseState.Activo;
                 newUsuario.Password = dto.Password;
                 usuario = await _repository.Add(newUsuario);
             }
             else
-            {
+            {                
                 var updatedUsuario = _mapper.Map<Usuario>(dto);
                 updatedUsuario.Password = dto.Password;
                 usuario = await _repository.Update(updatedUsuario);

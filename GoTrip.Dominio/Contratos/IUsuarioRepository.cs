@@ -26,6 +26,8 @@ namespace GoTrip.Dominio.Contratos
         Task Save();
 
         Task<Usuario> GetUserByUsername(string username);
+        Task<Usuario> GetUserByEmail(string email);
+        Task<Usuario> GetUserByDocumento(double documento);
 
         Task<bool> ValidatePasswordAsync(Usuario user, string password);
     }

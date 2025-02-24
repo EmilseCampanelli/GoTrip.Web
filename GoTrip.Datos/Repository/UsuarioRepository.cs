@@ -71,6 +71,15 @@ namespace GoTrip.Datos.Repository
             return await _dbSet.Where(u => u.UserName == userName).FirstOrDefaultAsync();
         }
 
+        public async Task<Usuario> GetUserByEmail(string email)
+        {
+            return await _dbSet.Where(u => u.Email == email).FirstOrDefaultAsync();
+        }
+        public async Task<Usuario> GetUserByDocumento(double dni)
+        {
+            return await _dbSet.Where(u => u.Documento == dni).FirstOrDefaultAsync();
+        }
+
         public async Task<bool> ValidatePasswordAsync(Usuario user, string password)
         {
             var model = await _context.Usuarios.FindAsync(user.Id);

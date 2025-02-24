@@ -21,7 +21,7 @@ namespace GoTrip.Web.Server.Controllers
         }
 
         [HttpGet("GetAll")]
-        public virtual async Task<ActionResult<PuntoTuristicoDto>> GetAll()
+        public virtual async Task<ActionResult<EventoDto>> GetAll()
         {
             try
             {

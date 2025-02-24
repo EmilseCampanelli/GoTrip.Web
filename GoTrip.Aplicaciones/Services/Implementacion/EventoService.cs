@@ -129,7 +129,9 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
 
                 try
                 {
-                    var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "Images");
+                    var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+
+
 
                     if (!Directory.Exists(uploadFolder))
                     {
@@ -149,9 +151,9 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
                         await image.CopyToAsync(stream);
                     }
 
-                    var relativePath = Path.Combine(uploadFolder, imageName);
-                    Path.Combine(uploadFolder, Guid.NewGuid().ToString() + Path.GetExtension(image.FileName));
-                    stringPath.Add(relativePath);
+                    var imageUrl = $"/images/{imageName}";
+
+                    stringPath.Add(imageUrl);
 
                 }
                 catch (Exception ex)

@@ -19,11 +19,13 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         private readonly IRepository<Categoria> _repository;
         private readonly IMapper _mapper;
         private const int _usuarioId = 1; //TODO: Modificar por el codigo del usuario autenticado
+        private readonly ICategoriaRepository _categoriaRepository;
 
-        public CategoriaService(IRepository<Categoria> repository, IMapper mapper)
+        public CategoriaService(IRepository<Categoria> repository, IMapper mapper, ICategoriaRepository categoriaRepository)
         {
             _repository = repository;
             _mapper = mapper;
+            _categoriaRepository = categoriaRepository;
         }
 
 
@@ -55,17 +57,23 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
         public async Task<CategoriaDto> Save(CategoriaDto dto)
         {
             Categoria categoria;
+            var categoriaRepetida = await _categoriaRepository.GetCategoriaByDescripcion(dto.Descripcion);
 
             if (dto.Id.Equals(0))
             {
-           
+                if(categoriaRepetida != null)
+                {
+                    if (categoriaRepetida.Descripcion.Equals(dto.Descripcion))
+                    {
+                        throw new Exception("La categoria que desea ingresar ya existe.");
+                    }
+                }
                 categoria = _mapper.Map<Categoria>(dto);
                 BaseEntityHelper.SetCreated(categoria, _usuarioId);
                 await _repository.Add(categoria);
             }
             else
-            {
-              
+            {              
                 categoria = _mapper.Map<Categoria>(dto);
                 BaseEntityHelper.SetUpdated(categoria, _usuarioId);
                 _repository.Update(categoria);

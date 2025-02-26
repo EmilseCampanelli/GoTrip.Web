@@ -102,6 +102,32 @@ namespace GoTrip.Aplicaciones.Services.Implementacion
 
         public async Task<string> PutImage(List<IFormFile> images, int id)
         {
+            if (images == null || images.Count == 0)
+            {
+                throw new ArgumentException("Debe proporcionar al menos una imagen.");
+            }
+
+            var formatosPermitidos = new[] { "image/jpeg", "image/png", "image/gif", "image/webp" };
+            var extensionesPermitidas = new[] { ".jpg", ".jpeg", ".png", ".gif", ".webp" };
+
+            foreach (var image in images)
+            {
+                if (image == null || image.Length == 0)
+                {
+                    throw new ArgumentException("El archivo de imagen no puede estar vacío.");
+                }
+
+                if (!formatosPermitidos.Contains(image.ContentType))
+                {
+                    throw new ArgumentException($"Formato de imagen no permitido: {image.ContentType}");
+                }
+
+                var extension = Path.GetExtension(image.FileName).ToLower();
+                if (!extensionesPermitidas.Contains(extension))
+                {
+                    throw new ArgumentException($"Extensión de archivo no permitida: {extension}");
+                }
+            }
             var pathImages = await SavePicture(images);
 
             var evento = await _eventoRepository.Get(id);

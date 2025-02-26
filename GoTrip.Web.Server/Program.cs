@@ -49,6 +49,8 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IAutenticacionService, AutenticacionService>();
 builder.Services.AddScoped<IPlanViajeRepository, PlanViajeRepository>();
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<IReporteRepository, ReporteRepository>();
+builder.Services.AddScoped<IReporteService, ReporteService>();
 
 builder.Services.AddAutoMapper(typeof(PuntoTuristicoProfile));
 builder.Services.AddAutoMapper(typeof(CategoriaProfile));
